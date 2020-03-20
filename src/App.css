@@ -1,26 +1,18 @@
 .tada-floating-button {
   position: fixed;
-  bottom: 0;
-  right: 15px;
-  z-index: 9;
+  bottom: 20px;
+  z-index: 2147483647;
 }
 
 .tada-popup {
   position: fixed;
-  bottom: 0;
-  right: 15px;
-  z-index: 9;
+  bottom: 20px;
+  z-index: 2147483647;
 }
 
 .tada-form-container {
-  border-radius: 20px;
-  margin-bottom: 35px;
-}
-
-.tada-fab {
-  position: 'absolute';
-  bottom: 80px;
-  float: right;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .tada-extended-icon {
@@ -87,6 +79,7 @@
   text-align: center;
   color: #fff;
 }
+
 .tada-launcher-container .tada-launcher-content-container {
   display: -webkit-inline-box;
   display: inline-flex;
@@ -137,6 +130,11 @@
   width: 30px;
   margin-right: 12px;
 }
+
+.tada-close-btn {
+   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill='%23FFF' fill-rule='nonzero' d='M11.06 10l3.713 3.712a.75.75 0 0 1-1.06 1.061L10 11.061l-3.712 3.712a.75.75 0 0 1-1.061-1.06L8.939 10 5.227 6.288a.75.75 0 1 1 1.06-1.061L10 8.939l3.712-3.712a.75.75 0 0 1 1.061 1.06L11.061 10z'/%3E%3C/svg%3E");
+}
+
 @media(max-width:60px) {
   .tada-launcher-container {
     padding: 15px

@@ -1,5 +1,11 @@
 import React from 'react';
 import posed from 'react-pose';
+import BodyEnd from './body-end';
+
+import { config } from './config';
+
+import { getSetting } from './contract/tada-setting';
+
 import './App.css';
 
 const RewardsButtonLayout = posed.div({
@@ -13,79 +19,91 @@ const FormLayout = posed.div({
 });
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isRewardsVisible: true,
-      isFormVisible: false,
-      rewardsDisplay: 'block',
-      formDisplay: 'none'
-    };
 
-    this.closeForm = this.closeForm.bind(this);
-    this.showForm = this.showForm.bind(this);
+  state = {
+    frameShown: false,
+    rewardVisible: false,
+    formDisplay: 'none',
+    buttonText: 'Rewards',
+    buttonColor: '#ff7003',
+    buttonTextColor: '#ffffff',
+    buttonPosition: 'bottom-left',
+    icon: 'https://cdn.sweettooth.io/v1/images/launcher_icons/crown.svg?color=%23FFFFFF'
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({ isVisible: !this.state.isVisible });
-    }, 1000);
-  }
+  async componentDidMount() {
+    var div = document.getElementById('tada-shopify-init');
 
-  closeForm() {
-    this.setState(() => ({      
-      isRewardsVisible: true,
-      isFormVisible: false,
-      rewardsDisplay: 'block',
-      formDisplay: 'none'
-    }));  
-  }
+    const response = await getSetting(div.dataset.shop);
 
-  showForm() {
-    this.setState(() => ({      
-      isRewardsVisible: false,
-      isFormVisible: true,
-      rewardsDisplay: 'none',
-      formDisplay: 'block'
-    }));  
+    if (response.status === 200) {
+      const setting = await response.json();
+
+      this.setState({
+        rewardVisible: setting.active === 1 ? true : false,
+        buttonText: setting.buttonText != null && setting.buttonText.length > 0 ? setting.buttonText : 'Rewards',
+        buttonColor: setting.buttonColor,
+        buttonTextColor: setting.buttonTextColor,
+        buttonPosition: setting.buttonPosition,
+        icon: setting.icon != null ? `${config.IMAGE_URL}/${setting.icon}` : 'https://cdn.sweettooth.io/v1/images/launcher_icons/crown.svg?color=%23FFFFFF'
+      })
+    }
   }
 
   render() {
-    const { isRewardsVisible, isFormVisible, rewardsDisplay, formDisplay } = this.state;
-    return (
-      <div>
-        <RewardsButtonLayout id="rewardsButtonLayout" className="tada-floating-button" pose={isRewardsVisible ? 'open' : 'closed'} style={{display: rewardsDisplay}}>
-        <div className="frame-content">
-            <button className="tada-launcher-button" onClick={this.showForm}>
-              <div style={{ backgroundColor: "#fe4c4c" }} className="tada-launcher-container tada-launcher-font-color-light tada-launcher-border-radius-circular tada-launcher-image-only launcher-closed" tabIndex="-1">
-                <div className="tada-launcher-content-container">
-                  <img src="https://cdn.sweettooth.io/v1/images/launcher_icons/crown.svg?color=%23FFFFFF" className="tada-launcher-icon" alt="" />
-                  <div className="tada-launcher-text">Rewards</div>
-                </div>
-                <div className="tada-launcher-close-icon tada-close-btn"></div>
+    const {
+      rewardVisible,
+      frameShown,
+      buttonText,
+      buttonColor,
+      buttonTextColor,
+      buttonPosition,
+      icon
+    } = this.state;
+
+    const closeForm = () => {
+      this.setState({ frameShown: false });
+    }
+
+    const showForm = () => {
+      this.setState({ frameShown: true });
+    }
+
+    const openButtonStyle = buttonPosition === 'bottom-left' ? { display: frameShown ? 'none' : 'block', left: 20 } : { display: frameShown ? 'none' : 'block', right: 20 }
+    const frameStyle = buttonPosition === 'bottom-left' ? { display: frameShown ? 'block' : 'none', left: 20 } : { display: frameShown ? 'block' : 'none', right: 20 }
+
+    console.log(icon);
+
+    return rewardVisible && (
+      <BodyEnd>
+        <RewardsButtonLayout id="rewardsButtonLayout" className="tada-floating-button" style={openButtonStyle}>
+          <button className="tada-launcher-button" onClick={showForm}>
+            <div style={{ backgroundColor: buttonColor }} className="tada-launcher-container tada-launcher-font-color-light tada-launcher-border-radius-circular tada-launcher-image-only launcher-closed" tabIndex="-1">
+              <div className="tada-launcher-content-container">
+                <img src={icon} className="tada-launcher-icon" alt="" />
+                <div className="tada-launcher-text"><font style={{ color: buttonTextColor }}>{buttonText}</font></div>
               </div>
-            </button>
-          </div>
+            </div>
+          </button>
         </RewardsButtonLayout>
-        <FormLayout className="tada-popup" id="myForm" pose={isFormVisible ? 'open' : 'closed'} style={{display: formDisplay}}>
+        <FormLayout className="tada-popup" pose={frameShown ? 'open' : 'closed'} style={frameStyle}>
           <div className="tada-form-container">
             <iframe title="test" src="https://www.michaelcorrey.com/"
               className="tada-form-container"
               overflow="hidden"
-              height="450px"
+              height="590px"
+              width="360px"
               frameBorder="0"
               display="initial"
               position="relative" />
           </div>
-          <div className="frame-content">
-            <button className="tada-launcher-button" onClick={this.closeForm}>
-              <div style={{ backgroundColor: "#fe4c4c" }} className="tada-launcher-container tada-launcher-font-color-light tada-launcher-border-radius-circular tada-launcher-image-only launcher-open" tabIndex="-1">
-                <div className="tada-launcher-close-icon tada-close-btn"></div>
-              </div>
-            </button>
-          </div>
+          <button className="tada-launcher-button" style={{ width: 40 }} onClick={closeForm}>
+            <div style={{ backgroundColor: buttonColor }} className="tada-launcher-container tada-launcher-font-color-light tada-launcher-border-radius-circular tada-launcher-image-only launcher-open" tabIndex="-1">
+              <div className="tada-launcher-close-icon tada-close-btn"></div>
+            </div>
+          </button>
         </FormLayout>
-      </div>
+      </BodyEnd>
     );
   }
 }
