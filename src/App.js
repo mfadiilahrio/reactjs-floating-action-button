@@ -20,14 +20,30 @@ const useStyles = makeStyles(theme => ({
   },
   frameContainer: {
     borderRadius: 20,
-  }
+  },
+  headerText: {
+    fontSize: 70,
+    fontWeight: "bold",
+    marginLeft: theme.spacing(5),
+    top: theme.spacing(5),
+    color: '#ffffff'
+  },
+  contentText: {
+    fontSize: 50,
+    fontWeight: "bold",
+    marginLeft: theme.spacing(5),
+    top: theme.spacing(5),
+    color: '#ffffff'
+  },
 }));
 
 function App() {
   const classes = useStyles();
 
   return (
-    <div className="app">
+    <div className="App">
+      <p className={classes.headerText}>Hello :)</p>
+      <p className={classes.contentText}>This React Web App sample for Floating Action Button With Floating Iframe</p>
       <div id="rewardsButtonLayout">
         <Fab variant="extended" className={classes.fab} id="rewardsButton" onClick={function () {
           document.getElementById("rewardsButtonLayout").style.display = "none";
@@ -40,7 +56,7 @@ function App() {
       </div>
       <div className="popup" id="myForm">
         <div className="form-container">
-          <Iframe url="https://mediadistribution.espn.com/"
+          <Iframe url="https://www.michaelcorrey.com/"
             className={classes.frameContainer}
             overflow="hidden"
             height="450px"
