@@ -1,6 +1,5 @@
 /* eslint-disable react/style-prop-object */
 import React from 'react';
-import Iframe from 'react-iframe';
 import './App.css';
 import CloseIcon from '@material-ui/icons/Close';
 import Fab from '@material-ui/core/Fab';
@@ -74,7 +73,7 @@ function App() {
       </div>
       <div className="popup" id="myForm">
         <div className="form-container">
-          <Iframe url="https://www.michaelcorrey.com/"
+          <iframe title="test" src="https://www.michaelcorrey.com/"
             className={classes.frameContainer}
             overflow="hidden"
             height="450px"
