@@ -1,5 +1,6 @@
 html {
   height: 100%;
+  background:  rgba(54,187,254,1);
 }
 
 .App {
@@ -14,7 +15,6 @@ html {
 }
 
 .tada-popup {
-  display: none;
   position: fixed;
   bottom: 0;
   right: 15px;
@@ -22,38 +22,26 @@ html {
 }
 
 .tada-form-container {
-  max-width: 300px;
-  padding: 10px;
   border-radius: 20px;
-  background-color: white;
-  margin-bottom: 75px;
-}
-
-.tada-box {
-  width: 100px;
-  height: 100px;
-  background: #ff1c68;
-  transform-origin: 50% 50%;
+  margin-bottom: 35px;
 }
 
 .tada-fab {
   position: 'absolute';
-  /* bottom: 50px;
-  right: 50px; */
-  background: '#fe4c4c';
-  color: '#ffffff';
+  bottom: 50px;
+  float: right;
 }
 
-.tada-extendedIcon {
+.tada-extended-icon {
   margin-right: 10px;
 }
 
-.tada-frameContainer {
+.tada-frame-container {
   border-radius: 20;
 }
 
 .tada-header-text {
-  font-size: 70;
+  font-size: 40pt;
   font-weight: "bold";
   margin-left: 100px;
   top: 100px;
@@ -61,7 +49,7 @@ html {
 }
 
 .tada-content-text {
-  font-size: 50;
+  font-size: 20pt;
   font-weight: "bold";
   margin-left: 100px;
   top: 100px;
