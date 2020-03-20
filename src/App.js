@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App">
       <p className={classes.headerText}>Hello :)</p>
-      <p className={classes.contentText}>This React Web App sample for Floating Action Button With Floating Iframe</p>
+      <p className={classes.contentText}>This is React Web App sample for Floating Action Button With Floating Iframe</p>
       <p className={classes.contentText}>
 
         The standard Lorem Ipsum passage, used since the 1500s
