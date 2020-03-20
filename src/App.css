@@ -1,10 +1,17 @@
 html {
   height: 100%;
-  background: linear-gradient(0deg, rgba(54,187,254,1) 0%, rgba(174,43,253,1) 100%);
+  background:  rgba(54,187,254,1);
 }
 
 .App {
   text-align: center;
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  z-index: 9;
 }
 
 .popup {
