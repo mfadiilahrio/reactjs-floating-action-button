@@ -28,6 +28,7 @@ class App extends React.Component {
     buttonColor: '#ff7003',
     buttonTextColor: '#ffffff',
     buttonPosition: 'bottom-left',
+    pageUrl: '',
     icon: 'https://cdn.sweettooth.io/v1/images/launcher_icons/crown.svg?color=%23FFFFFF'
   }
 
@@ -45,6 +46,7 @@ class App extends React.Component {
         buttonColor: setting.buttonColor,
         buttonTextColor: setting.buttonTextColor,
         buttonPosition: setting.buttonPosition,
+        pageUrl: setting.pageUrl,
         icon: setting.icon != null ? `${config.IMAGE_URL}/${setting.icon}` : 'https://cdn.sweettooth.io/v1/images/launcher_icons/crown.svg?color=%23FFFFFF'
       })
     }
@@ -58,7 +60,8 @@ class App extends React.Component {
       buttonColor,
       buttonTextColor,
       buttonPosition,
-      icon
+      icon,
+      pageUrl
     } = this.state;
 
     const closeForm = () => {
@@ -74,7 +77,7 @@ class App extends React.Component {
 
     console.log(icon);
 
-    return rewardVisible && (
+    return rewardVisible && pageUrl.length > 0 && (
       <BodyEnd>
         <RewardsButtonLayout id="rewardsButtonLayout" className="tada-floating-button" style={openButtonStyle}>
           <button className="tada-launcher-button" onClick={showForm}>
@@ -88,7 +91,7 @@ class App extends React.Component {
         </RewardsButtonLayout>
         <FormLayout className="tada-popup" pose={frameShown ? 'open' : 'closed'} style={frameStyle}>
           <div className="tada-form-container">
-            <iframe title="test" src="https://www.michaelcorrey.com/"
+            <iframe title="TADA" src={pageUrl}
               className="tada-form-container"
               overflow="hidden"
               height="590px"
