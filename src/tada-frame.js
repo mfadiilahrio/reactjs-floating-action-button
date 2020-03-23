@@ -18,13 +18,15 @@ function TadaFrame(props) {
     const innerCloseButton = props.isMobile ? 'block' : 'block';
  
     var className = "";
+    var loadingClassName = "tada-loading-spinner-container tada-content-loading tada-loading-spinner-hide";
 
     if (props.visible) {
-        
         if (visible !== props.visible) {
             className = "tada-panel-frame-container tada-panel-border-radius-rounded tada-theme-light tada-panel-enter tada-panel-enter-active";
+            loadingClassName = "tada-loading-spinner-container tada-content-loading tada-loading-spinner-show";
         } else {
             className = "tada-panel-frame-container tada-panel-border-radius-rounded tada-theme-light tada-panel-enter-done";
+            loadingClassName = "tada-loading-spinner-container tada-content-loading tada-loading-spinner-hide";
         }
     } else {
         if (visible !== props.visible) {
@@ -36,6 +38,10 @@ function TadaFrame(props) {
 
     return className.length > 0 && (
         <div className={className} style={frameStyle}>
+            <div className={loadingClassName}>
+                ::before
+                ::after
+            </div>
             <iframe className="tada-panel-frame" src={props.src} allowFullScreen></iframe>
             <div className="tada-panel-close-button" style={{display: innerCloseButton}} onClick={handleCLose}>
                 X
