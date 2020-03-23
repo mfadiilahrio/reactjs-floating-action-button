@@ -6,6 +6,7 @@ function TadaFrame(props) {
 
     useEffect(() => {
         setTimeout(() => {
+            setLoading(props.visible);
             setVisible(props.visible);
         }, 100);
     }, [props.visible]);
