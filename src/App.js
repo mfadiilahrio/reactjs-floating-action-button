@@ -1,6 +1,7 @@
 import React from 'react';
 import BodyEnd from './body-end';
 import TadaFrame from './tada-frame';
+import getWidth from 'string-pixel-width';
 
 import { config } from './config';
 
@@ -70,6 +71,10 @@ class App extends React.Component {
       this.setState({ frameShown: !frameShown });
     }
 
+    const calculateWidth = (text) => {
+      return getWidth(text, { font: 'Verdana', size: 15 }) + 80;
+    }
+
     const isTooDark = (color) => {
       const hex = color.replace('#', '');
       const c_r = parseInt(hex.substr(0, 2), 16);
@@ -80,7 +85,7 @@ class App extends React.Component {
       return brightness < 155;
     }
 
-    const buttonStyle = buttonPosition === 'bottom-right' || isMobile ? {bottom: isMobile ? 30 : 20, width: 143, right: isMobile ? 30 : 20 } : {bottom: isMobile ? 30 : 20, width: 147, left: isMobile ? 30 : 20 }
+    const buttonStyle = buttonPosition === 'bottom-right' || isMobile ? {bottom: isMobile ? 30 : 20, width: calculateWidth(buttonText), right: isMobile ? 30 : 20 } : {bottom: isMobile ? 30 : 20, width: calculateWidth(buttonText), left: isMobile ? 30 : 20 }
     
     return rewardVisible && pageUrl.length > 0 && (
       <BodyEnd>
