@@ -46,7 +46,6 @@ function TadaFrame(props) {
             </div>
             <iframe onLoad={onFrameLoaded} className="tada-panel-frame" src={props.src} allowFullScreen></iframe>
             <button className="tada-panel-close-button" style={{display: innerCloseButton}} onClick={handleClose}>
-                x
             </button>
         </div>
     );

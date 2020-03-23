@@ -9,9 +9,9 @@
   outline: none;
   width: 25px;
   height: 25px;
-  padding-bottom: 2px;
-  color: slategrey;
-  background-color: rgba(233, 210, 252, 0.5);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' viewBox='0 0 20 20'%3E%3Cpath fill='%23FFF' fill-rule='nonzero' d='M11.06 10l3.713 3.712a.75.75 0 0 1-1.06 1.061L10 11.061l-3.712 3.712a.75.75 0 0 1-1.061-1.06L8.939 10 5.227 6.288a.75.75 0 1 1 1.06-1.061L10 8.939l3.712-3.712a.75.75 0 0 1 1.061 1.06L11.061 10z'/%3E%3C/svg%3E");
 }
 
 .tada-close-btn {
