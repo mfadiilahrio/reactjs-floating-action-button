@@ -68,7 +68,7 @@ class App extends React.Component {
     } = this.state;
 
     const onHandleClose = () => {
-      console.log('dudidam');
+      toggleForm()
     }
 
     const toggleForm = () => {
