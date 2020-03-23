@@ -67,6 +67,10 @@ class App extends React.Component {
       icon,
     } = this.state;
 
+    const onHandleClose = () => {
+      console.log('dudidam');
+    }
+
     const toggleForm = () => {
       this.setState({ frameShown: !frameShown });
     }
@@ -91,7 +95,7 @@ class App extends React.Component {
       <BodyEnd>
         <div style={{ position: "fixed", width: 0, height: 0, bottom: 0, right: 0, zIndex: 2147483647 }}>
           <div>
-            <TadaFrame src={pageUrl} position={buttonPosition} isMobile={isMobile} visible={frameShown} />
+            <TadaFrame src={pageUrl} position={buttonPosition} isMobile={isMobile} visible={frameShown} onClose={onHandleClose} />
             <div className={`tada-launcher-frame-container tada-launcher-border-radius-circular ${isMobile ? 'tada-launcher-mobile' : 'tada-launcher-image-only'} ${frameShown ? 'tada-launcher-open' : 'tada-launcher-closed'} tada-launcher-animate`} style={buttonStyle}>
               <button className="tada-launcher-button" onClick={toggleForm}>
                 <div style={{ backgroundColor: buttonColor }} className={`tada-launcher-container ${isTooDark(buttonColor) ? 'tada-launcher-font-color-light' : 'tada-launcher-font-color-dark'} tada-launcher-border-radius-circular ${isMobile ? 'tada-launcher-mobile' : 'tada-launcher-image-only'} ${frameShown ? 'tada-launcher-open' : 'tada-launcher-closed'}`} tabIndex="-1">
