@@ -15,7 +15,7 @@ function TadaFrame(props) {
 
     const frameStyle = props.position === 'bottom-right' || props.isMobile ? {height: 'calc(100% - 120px)', bottom: 'calc(100px)', right: 20} : {height: 'calc(100% - 120px)', bottom: 'calc(100px)', left: 20}
 
-    const innerCloseButton = props.isMobile ? 'block' : 'block';
+    const innerCloseButton = props.isMobile ? 'block' : 'none';
  
     var className = "";
 
@@ -37,9 +37,9 @@ function TadaFrame(props) {
     return className.length > 0 && (
         <div className={className} style={frameStyle}>
             <iframe className="tada-panel-frame" src={props.src} allowFullScreen></iframe>
-            <div className="tada-panel-close-button" style={{display: innerCloseButton}} onClick={handleCLose}>
-                X
-            </div>
+            <button className="tada-panel-close-button" style={{display: innerCloseButton}} onClick={handleCLose}>
+                x
+            </button>
         </div>
     );
 }
