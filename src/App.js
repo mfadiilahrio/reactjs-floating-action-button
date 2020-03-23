@@ -82,13 +82,11 @@ class App extends React.Component {
 
     const buttonStyle = buttonPosition === 'bottom-right' || isMobile ? {bottom: isMobile ? 30 : 20, width: 143, right: isMobile ? 30 : 20 } : {bottom: isMobile ? 30 : 20, width: 147, left: isMobile ? 30 : 20 }
     
-    console.log('dada: ' + isTooDark(buttonColor));
-    
     return rewardVisible && pageUrl.length > 0 && (
       <BodyEnd>
         <div style={{ position: "fixed", width: 0, height: 0, bottom: 0, right: 0, zIndex: 2147483647 }}>
           <div>
-            { frameShown ? <TadaFrame src={pageUrl} position={buttonPosition} isMobile={isMobile} /> : null }
+            <TadaFrame src={pageUrl} position={buttonPosition} isMobile={isMobile} visible={frameShown} />
             <div className={`tada-launcher-frame-container tada-launcher-border-radius-circular ${isMobile ? 'tada-launcher-mobile' : 'tada-launcher-image-only'} ${frameShown ? 'tada-launcher-open' : 'tada-launcher-closed'} tada-launcher-animate`} style={buttonStyle}>
               <button className="tada-launcher-button" onClick={toggleForm}>
                 <div style={{ backgroundColor: buttonColor }} className={`tada-launcher-container ${isTooDark(buttonColor) ? 'tada-launcher-font-color-light' : 'tada-launcher-font-color-dark'} tada-launcher-border-radius-circular ${isMobile ? 'tada-launcher-mobile' : 'tada-launcher-image-only'} ${frameShown ? 'tada-launcher-open' : 'tada-launcher-closed'}`} tabIndex="-1">
