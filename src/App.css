@@ -4,6 +4,14 @@
   right:0;
   margin-right: 30px;
   margin-top: 20px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  width: 25px;
+  height: 25px;
+  padding-bottom: 2px;
+  color: slategrey;
+  background-color: rgba(233, 210, 252, 0.5);
 }
 
 .tada-close-btn {
