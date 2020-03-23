@@ -1,3 +1,11 @@
+.tada-panel-close-button{
+  position:absolute;
+  top:0;
+  right:0;
+  margin-right: 30px;
+  margin-top: 20px;
+}
+
 .tada-close-btn {
   background-size: 100%;
   background-repeat: no-repeat;
