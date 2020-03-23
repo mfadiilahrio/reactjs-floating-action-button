@@ -44,6 +44,8 @@ class App extends React.Component {
     }
 
     window.addEventListener("resize", this.updateWindowDimensions);
+
+    this.setState({isMobile: window.innerWidth <= 450 })
   }
 
   componentWillUnmount() {
