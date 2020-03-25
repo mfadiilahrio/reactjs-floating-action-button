@@ -15,13 +15,13 @@ class App extends React.Component {
     frameShown: false,
     rewardVisible: false,
     formDisplay: 'none',
-    buttonText: 'Rewards',
+    buttonText: 'Get Rewards',
     buttonColor: '#ff7003',
     buttonTextColor: '#ffffff',
     buttonPosition: 'bottom-left',
     pageUrl: '',
     isMobile: false,
-    icon: 'https://cdn.sweettooth.io/v1/images/launcher_icons/crown.svg?color=%23FFFFFF'
+    icon: `${config.IMAGE_URL}/ic-rewards.png`
   }
 
   async componentDidMount() {
@@ -34,12 +34,12 @@ class App extends React.Component {
 
       this.setState({
         rewardVisible: setting.active === 1 ? true : false,
-        buttonText: setting.buttonText != null && setting.buttonText.length > 0 ? setting.buttonText : 'Rewards',
+        buttonText: setting.buttonText != null && setting.buttonText.length > 0 ? setting.buttonText : 'Get Rewards',
         buttonColor: setting.buttonColor,
         buttonTextColor: setting.buttonTextColor,
         buttonPosition: setting.buttonPosition,
         pageUrl: setting.pageUrl,
-        icon: setting.icon != null ? `${config.IMAGE_URL}/${setting.icon}` : 'https://cdn.sweettooth.io/v1/images/launcher_icons/crown.svg?color=%23FFFFFF'
+        icon: setting.icon != null ? `${config.IMAGE_URL}/${setting.icon}` : `${config.IMAGE_URL}/ic-rewards.png`
       })
     }
 
