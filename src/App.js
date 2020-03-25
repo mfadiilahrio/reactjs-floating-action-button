@@ -78,7 +78,7 @@ class App extends React.Component {
     }
 
     const calculateWidth = (text) => {
-      return getWidth(text, { font: 'Verdana', size: 15 }) + 80;
+      return getWidth(text, { font: 'Verdana', size: 16, bold: true }) + 80;
     }
 
     const isTooDark = (color) => {
